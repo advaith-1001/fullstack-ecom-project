@@ -1,0 +1,563 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+body {
+    background-color:#FCFAEE;
+    height: 100%;
+}
+
+.josefin-sans-font {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: bold;
+  }
+
+.nav {
+    background-color: #A5B68D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    gap: 2.5rem;
+    list-style-type: none;
+    margin-right: 1rem;
+}
+
+.nav-list a {
+    font-family: "Josefin Sans";
+    text-decoration: none;
+    color: #FCFAEE;
+    font-size: 1.25rem;
+}
+
+.nav-list a:hover {
+    font-family: "Josefin Sans";
+    text-decoration: none;
+    color: #493628;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+}
+
+.brand-name {
+    text-decoration: none;
+    color: #493628;
+    font-family: "Josefin Sans";
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 1rem;
+}
+
+.login-cart-container {
+    padding-right: 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.login-button {
+    border:2px solid #493628;
+    background-color: #493628;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    color: #FCFAEE;
+    font-family: "Josefin Sans", "sans-serif";
+}
+
+.logout-button {
+    border:2px solid #493628;
+    background-color: #493628;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    color: #FCFAEE;
+    font-family: "Josefin Sans", "sans-serif";
+    margin-left: 1rem;
+}
+
+.login-button:hover {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.logout-button:hover {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    font-family: "Josefin Sans", "sans-serif";
+    font-size: 1.5rem;
+}
+
+.shopping-cart {
+    font-size: 1.5rem;
+    color: #ECDFCC;
+}
+
+.shopping-cart:hover {
+    color: #493628;
+    transition: color 0.3s ease;
+}
+
+.home-body {
+    background-image: url("assets\jason-briscoe-KTrov7eujms-unsplash.jpg"); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the section */
+    background-position: center; /* Center the image */
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:first baseline;
+    gap: 2.5rem;
+}
+
+.home-shop-button{
+    display: inline-block;
+    font-size: 2rem;
+    padding: 1.5rem;
+    background-color: #A5B68D;
+    border-radius: 50px;
+    color: #FCFAEE;
+    border: none;
+    font-family: "Josefin Sans";   
+}
+
+.home-shop-button:hover{
+    display: inline-block;
+    font-size: 2rem;
+    padding: 1.5rem;
+    background-color: #A5B68D;
+    border-radius: 50px;
+    color: #493628;
+    transition: color 0.3s ease;
+    border-color: #493628 #493628;
+    cursor: pointer;
+    font-family: "Josefin Sans";   
+}
+
+.home-typography{
+    font-family: "Josefin Sans";
+    font-size: 4.5rem;
+    font-weight: 800;
+    color:#493628;
+    margin-left: 1.5rem;
+}
+
+.testimonials-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3.5rem;
+    padding: 2rem;
+}
+
+.testimonial {
+    background-color:#A5B68D;  
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.testimonial:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.quote {
+    font-style: italic;
+    font-family: "Josefin Sans";
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.test-name {
+    font-weight: bold;
+    font-family: "Josefin Sans";
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.footer {
+    background-color: #493628;
+    display: flex;
+    padding: 2rem 3rem;
+    justify-content: flex-start;
+    gap: 7rem;
+    flex-wrap: wrap;
+}
+
+.copyright {
+    font-family: "Josefin Sans";
+    color: #ECDFCC;
+}
+
+.footer-links {
+    text-decoration: none;
+    font-family: "Josefin Sans";
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #ECDFCC;
+}
+
+.contact-head {
+    font-family: "Josefin Sans";
+    font-size: 1.25rem;
+    color: #ECDFCC;
+}
+i {
+    padding-right: 1rem;
+}
+
+.phone {
+    font-family: "Josefin Sans";
+    font-size: 1rem;
+    padding-top: 1rem;
+    color: #ECDFCC;
+}
+
+.email {
+    font-family: "Josefin Sans";
+    font-size: 1rem;
+    padding-top: 1rem;
+    color: #ECDFCC; 
+}
+
+.follow {
+    font-family: "Josefin Sans";
+    font-size: 1.25rem;
+    color: #ECDFCC;
+    padding-bottom: 1rem;
+}
+
+.social-media i {
+    color: #ECDFCC;
+    font-size: 1.25rem;
+}
+
+.product-card {
+    width: 170px;
+    min-height: 270px;
+    background-color: #ECDFCC;
+    padding: 1rem;
+    border-radius: 3%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card-link {
+    text-decoration: none;
+    color: #493628
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Slightly lift the card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a stronger shadow */
+  }
+
+.product-card-image{
+    width: 120px;
+    height: 130px;
+}
+
+
+.product-card-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.product-card-details {
+    padding: 1rem;
+    font-family: "Josefin Sans";
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-card-name {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.product-card-price {
+    font-size: 1.5rem;
+}
+
+.grocery-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.grocery-content {
+    flex: 1;
+}
+
+.utensils-content {
+    flex: 1;
+}
+
+.cleaning-content {
+    flex: 1;
+}
+
+.decor-content {
+    flex: 1;
+}
+
+.all-content {
+    flex: 1;
+}
+
+.category-header-container {
+    display: flex;
+    justify-content: center;
+    padding: 4rem;
+}
+
+.category-header {
+    font-family: "Josefin Sans";
+    font-size: 2.5rem;
+    color: #493628;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Flexible columns */
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+    margin-bottom: 25vh;
+}
+
+.product-page-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 100vh;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.product-page-details-container {
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    gap: 3.25rem;
+    padding-bottom: 3rem;
+    flex-wrap: wrap;
+    width: 500px;
+    padding: 2rem;
+}
+
+.product-page-product-name {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    font-family: "Josefin Sans";
+    color: #493628;
+}
+
+.product-page-product-desc {
+    font-family: "Josefin Sans";
+    font-size: 1rem;
+}
+
+.product-page-product-price {
+    font-family: "Josefin Sans";
+    font-size: 2rem;
+}
+
+.product-page-image {
+    width: 400px;
+    border-radius: 2%;
+    padding-top: 2rem;
+}
+
+.add-cart-qty-btn-container{
+    display: flex;
+    align-items: center;
+}
+
+.qty-input {
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    border: none;
+    background-color: #A5B68D;
+    font-family: "Josefin Sans";
+}
+
+.dec-btn {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: none;
+    background-color: #493628;
+    color: #ECDFCC;
+    font-size: 2.5rem;
+    font-family: "Josefin Sans";
+
+}
+
+.inc-btn {
+    height: 3rem;
+    width: 3rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+    border: none;
+    background-color: #493628;
+    color: #ECDFCC;
+    font-size: 2.5rem;
+    font-family: "Josefin Sans";
+}
+
+.add-to-cart-btn {
+    border:2px solid #A5B68D;
+    background-color:#A5B68D;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color:#493628;
+    font-family: "Josefin Sans", "sans-serif";
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.login-container {
+    display: flex; /* Enables Flexbox */
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    height: 100vh; /* Full viewport height */
+}
+
+.login-page-header {
+    font-family:  "Josefin Sans", "sans-serif";
+}
+
+.login-box {
+    display: flex;
+    border: #493628 solid;
+    flex-direction: column;
+    width: 400px;
+    border-radius: 10px;
+    background-color: #ECDFCC;
+}
+
+.login-page-header-container{
+    padding: 1rem;
+}
+
+.login-page-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.username-input {
+    width: 200px;
+    height: 2rem;
+    border-radius: 8px;
+    border: #493628 solid;
+    font-family:"Josefin Sans", "sans-serif";
+    padding: 0.5rem;
+}
+
+.password-input {
+    width: 200px;
+    height: 2rem;
+    border-radius: 8px;
+    border: #493628 solid;
+    font-family:"Josefin Sans", "sans-serif";
+    padding: 0.5rem;
+}
+
+.login-page-button{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-family: "Josefin Sans", "sans-serif";
+    border-radius: 10px;
+    font-size: 1.25rem;
+    border: none;
+    background-color: #A5B68D;
+}
+
+.login-page-button:hover{
+    cursor: pointer;
+    color: #ECDFCC;
+    transition: color 0.3s ease;
+}
+.login-page-button-container{
+    padding-left: 1.1rem;
+    padding-top: 1rem;
+}
+
+.new-user-q {
+    font-family: "Josefin Sans", "sans-serif";
+    font-weight: 350;
+    padding-left: 1.1rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.signup-page-button-container{
+    padding-left: 1.1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
