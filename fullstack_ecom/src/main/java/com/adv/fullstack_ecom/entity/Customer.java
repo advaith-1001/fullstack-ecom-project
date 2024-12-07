@@ -27,11 +27,13 @@ public class Customer {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
+//    @OneToMany(mappedBy = "customer")
+//    private List<Order> orders;
 
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
-    private Cart cart;
+//    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+//    private Cart cart;
+
+    private String role;
 
 
 }

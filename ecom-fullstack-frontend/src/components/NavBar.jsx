@@ -1,15 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useUser } from "../services/UserContext.jsx";
+// import { useUser } from "../services/UserContext.jsx";
 import "../styles.css";
 
 function NavBar() {
-    const { user, setUser } = useUser();
-    const navigate = useNavigate();
+    // const { user, setUser } = useUser();
+    // const navigate = useNavigate();
 
-    const handleLogout = () => {
-        setUser(null); // Clear user state
-        navigate("/auth/login");
-    };
+    // const handleLogout = () => {
+    //     setUser(null); // Clear user state
+    //     navigate("/auth/login");
+    // };
 
     return (
         <nav className="nav">
@@ -23,10 +23,10 @@ function NavBar() {
                 <li><Link to="/decor">Decor</Link></li>
             </ul>
             <div className="login-cart-container">
-                <Link to="/cart" className="shopping-cart">
+                {/* <Link to="/cart" className="shopping-cart">
                     <i className="fas fa-shopping-cart"></i>
-                </Link>
-                {user ? (
+                </Link> */}
+                {/* {user ? (
                     <div className="user-info">
                         <span className="user-name">{user.userName}</span>
                         <button className="logout-button" onClick={handleLogout}>
@@ -40,7 +40,7 @@ function NavBar() {
                     >
                         Login
                     </button>
-                )}
+                )} */}
             </div>
         </nav>
     );
