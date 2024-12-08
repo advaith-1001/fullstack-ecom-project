@@ -26,21 +26,11 @@ function NavBar() {
                 {/* <Link to="/cart" className="shopping-cart">
                     <i className="fas fa-shopping-cart"></i>
                 </Link> */}
-                {/* {user ? (
-                    <div className="user-info">
-                        <span className="user-name">{user.userName}</span>
-                        <button className="logout-button" onClick={handleLogout}>
-                            Logout
-                        </button>
-                    </div>
-                ) : (
-                    <button
-                        className="login-button"
-                        onClick={() => navigate("/auth/login")}
-                    >
-                        Login
+                <a href="http://localhost:8080/login" >
+                    <button className="login-button">
+                            Login
                     </button>
-                )} */}
+                </a>
             </div>
         </nav>
     );
