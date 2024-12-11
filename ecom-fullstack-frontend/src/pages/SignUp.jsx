@@ -1,56 +1,41 @@
-// import React, { useState } from "react";
-// import axios from "axios";
-// import { useUser } from "../services/UserContext.jsx";
-// import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import axios from "axios";
 
-// function SignUp() {
-//     const [userName, setUserName] = useState("");
-//     const [password, setPassword] = useState("");
+const SignUp = () => {
+  const [formData, setFormData] = useState({ userName: "", password: "" });
+  const [message, setMessage] = useState("");
 
-//     const navigate = useNavigate();
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-//     const handleSignUp = async () => {
-//         try {
-//             const response = await axios.post("http://localhost:8080/auth/register", {
-//                 userName, // User's username
-//                 password, // User's password
-//             });
-//             alert(response.data); // Show success message
-//             console.log({ userName });
-//             navigate("/home");
-//         } catch (error) {
-//             alert("Registration failed. Try a different username.");
-//         }
-//     };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+        const response = await axios.post("http://localhost:8080/api/auth/signup", credentials, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            withCredentials: true, // Include credentials like cookies
+        });
+      setMessage(response.data);
+    } catch (error) {
+      setMessage(error.response.data);
+    }
+  };
 
-//     return (
-//         <div className="login-container">
-//         <div className="login-box">
-//             <div className="login-page-header-container">
-//             <h2 className="login-page-header">Sign Up</h2>
-//             </div>
-//             <div className="login-page-input-container">
-//             <input
-//             className="username-input"
-//                 type="text"
-//                 placeholder="Username"
-//                 value={userName}
-//                 onChange={(e) => setUserName(e.target.value)}
-//             />
-//             <input
-//             className="password-input"
-//                 type="password"
-//                 placeholder="Password"
-//                 value={password}
-//                 onChange={(e) => setPassword(e.target.value)}
-//             />
-//             </div>
-//             <div className="signup-page-button-container">
-//             <button className="login-page-button" onClick={handleSignUp}>Sign Up</button>
-//             </div>
-//         </div>
-//         </div>
-//     );
-// }
+  return (
+    <div>
+      <h2>Signup</h2>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="username" placeholder="Username" onChange={handleChange} required />
+        <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
+        <button type="submit">Signup</button>
+      </form>
+      <p>{message}</p>
+    </div>
+  );
+};
 
-// export default SignUp;
+export default SignUp;
+

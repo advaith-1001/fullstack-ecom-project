@@ -478,10 +478,10 @@ i {
 }
 
 .login-container {
-    display: flex; /* Enables Flexbox */
-    justify-content: center; /* Horizontally center the content */
-    align-items: center; /* Vertically center the content */
-    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh;
 }
 
 .login-page-header {
