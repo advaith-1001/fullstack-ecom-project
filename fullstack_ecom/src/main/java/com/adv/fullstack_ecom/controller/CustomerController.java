@@ -8,11 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5173/")
+@CrossOrigin(origins = "http://localhost:5173/", allowCredentials = "true")
 public class CustomerController {
 
     @Autowired
@@ -22,14 +23,16 @@ public class CustomerController {
     public ResponseEntity<?> signup(@RequestBody Customer customer) {
         // Check if username already exists
         if (customerRepository.findByUserName(customer.getUserName()).isPresent()) {
-            return ResponseEntity.badRequest().body("Username already exists");
+            return ResponseEntity
+                    .badRequest()
+                    .body(Map.of("error", "Username already exists"));
         }
 
         // Save the user (hash the password in a real application)
         customer.setPassword(customer.getPassword()); // Replace with BCrypt hashing
         customerRepository.save(customer);
 
-        return ResponseEntity.ok("Signup successful");
+        return ResponseEntity.ok(Map.of("message", "Signup successful"));
     }
 
     @PostMapping("/login")

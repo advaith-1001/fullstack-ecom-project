@@ -463,6 +463,7 @@ i {
     padding-bottom: 1rem;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+    margin-left: 1rem;
     border-radius: 50px;
     font-size: 1.5rem;
     font-weight: 600;
@@ -486,6 +487,7 @@ i {
 
 .login-page-header {
     font-family:  "Josefin Sans", "sans-serif";
+    padding: 1.5rem;
 }
 
 .login-box {
@@ -497,9 +499,7 @@ i {
     background-color: #ECDFCC;
 }
 
-.login-page-header-container{
-    padding: 1rem;
-}
+
 
 .login-page-input-container {
     display: flex;
@@ -508,12 +508,15 @@ i {
     padding: 1rem;
 }
 
+
+
 .username-input {
     width: 200px;
     height: 2rem;
     border-radius: 8px;
     border: #493628 solid;
     font-family:"Josefin Sans", "sans-serif";
+    font-size: 1rem;
     padding: 0.5rem;
 }
 
@@ -523,6 +526,7 @@ i {
     border-radius: 8px;
     border: #493628 solid;
     font-family:"Josefin Sans", "sans-serif";
+    font-size: 1rem;
     padding: 0.5rem;
 }
 
@@ -531,8 +535,9 @@ i {
     padding-right: 1.5rem;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
+    width: 150px;
     font-family: "Josefin Sans", "sans-serif";
-    border-radius: 10px;
+    border-radius: 25px;
     font-size: 1.25rem;
     border: none;
     background-color: #A5B68D;
@@ -543,21 +548,20 @@ i {
     color: #ECDFCC;
     transition: color 0.3s ease;
 }
-.login-page-button-container{
-    padding-left: 1.1rem;
-    padding-top: 1rem;
-}
 
 .new-user-q {
     font-family: "Josefin Sans", "sans-serif";
     font-weight: 350;
-    padding-left: 1.1rem;
-    padding-top: 2rem;
+    padding-left: 1.5rem;
+    padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
-.signup-page-button-container{
-    padding-left: 1.1rem;
+.err-msg {
+    font-family: "Josefin Sans", "sans-serif";
+    font-weight: 350;
+    padding-left: 1.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    color: red;
 }

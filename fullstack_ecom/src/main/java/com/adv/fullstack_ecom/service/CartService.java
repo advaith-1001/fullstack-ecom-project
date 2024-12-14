@@ -36,6 +36,7 @@ public class CartService {
         return cartRepository.findByCustomerUserName(username);
     }
 
+
     public void addItemToCart(String username, Long productId, int quantity) {
 
         Cart cart = getCartByCustomerUserName(username);

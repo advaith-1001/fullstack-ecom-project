@@ -10,29 +10,41 @@ const SignUp = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default behavior
+
+    // Log formData to check credentials before sending the request
+    console.log("Form data being sent:", formData);
+
     try {
-        const response = await axios.post("http://localhost:8080/api/auth/signup", credentials, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-            withCredentials: true, // Include credentials like cookies
-        });
-      setMessage(response.data);
+        const response = await axios.post(
+            "http://localhost:8080/api/auth/signup",
+            formData, // Correctly pass the form data
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                withCredentials: true,
+            }
+        );
+        console.log("Response from backend:", response.data); // Log response for debugging
+        setMessage(response.data.message); // Set success message
     } catch (error) {
-      setMessage(error.response.data);
+        console.error("Error from backend:", error.response?.data || error.message); // Log error details
+        setMessage(error.response?.data?.error || "Something went wrong.");
     }
-  };
+};
 
   return (
-    <div>
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="username" placeholder="Username" onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-        <button type="submit">Signup</button>
+    <div className="login-container">
+      <div className="login-box">
+      <h2 className="login-page-header">Signup</h2>
+      <form onSubmit={handleSubmit} className="login-page-input-container">
+        <input type="text" className="username-input" name="userName" placeholder="Username" onChange={handleChange} required />
+        <input type="password" className="password-input" name="password" placeholder="Password" onChange={handleChange} required />
+        <button type="submit" className="login-page-button">Signup</button>
       </form>
-      <p>{message}</p>
+      <p className="err-msg">{message}</p>
+      </div>
     </div>
   );
 };

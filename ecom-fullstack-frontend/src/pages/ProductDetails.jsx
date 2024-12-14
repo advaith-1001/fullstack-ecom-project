@@ -10,36 +10,48 @@
         const {id} = useParams();
         const[product, setProduct] = useState(null);
         const[qty, setQty] = useState(1);
-        // const { user, setUser } = useUser();
+        const [user, setUser] = useState("");
+        const[message, setMessage] = useState("");
 
         const navigate = useNavigate();
 
-        // const handleAddToCart = async () => {
-        //     if (!user || !user.userName) {
-        //         alert("You need to be logged in to add items to the cart.");
-        //         navigate("/auth/login"); // Redirect to login page if not logged in
-        //         return;
-        //     }
-        
-        //     try {
-        //         const response = await axios.post(
-        //             `http://localhost:8080/cart/add-item`,
-        //             null, // No request body; params are used instead
-        //             {
-        //                 params: {
-        //                     userName: user.userName, // Use `userName` from context
-        //                     productId: id,          // Product ID from route params
-        //                     quantity: qty           // Quantity state
-        //                 },
-        //                 withCredentials: true // Send cookies for session-based authentication
-        //             }
-        //         );
-        //         console.log("Item added to cart:", response.data);
-        //     } catch (error) {
-        //         console.error("Error adding item to cart:", error);
-        //         alert("Could not add item to cart.");
-        //     }
-        // };
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get("http://localhost:8080/api/auth/current-user", {
+                    withCredentials: true, // Send cookies if required
+                });
+                setUser(response.data.userName); // Use this username in your logic
+            } catch (error) {
+                console.error("Error fetching current user", error);
+            }
+        };
+
+        useEffect(() => {
+            fetchUser();
+        }, []);
+
+        const handleAddToCart = async () => {
+            try {
+                const response = await axios.post(
+                    "http://localhost:8080/cart/add-item", // Your API endpoint
+                    null, // No body, since the data is sent via query params
+                    {
+                        params: {
+                            userName: user, // Pass the logged-in user's username
+                            productId: id, // ID of the product being added
+                            quantity: qty,  // Quantity selected by the user
+                        },
+                    }
+                );
+                setMessage(response.data); // Display success message from the server
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    setMessage(error.response.data); // Display error message from the server
+                } else {
+                    setMessage("Something went wrong. Please try again.");
+                }
+            }
+        };
         
 
         function increment() {
@@ -84,7 +96,8 @@
                         <input type="number" className="qty-input" value={qty} />
                         <button className="inc-btn" onClick={increment}>+</button>
 
-                    {/* <button className="add-to-cart-btn" onClick={handleAddToCart}>Add to Cart</button> */}
+                    <button className="add-to-cart-btn" onClick={handleAddToCart}>Add to Cart</button>
+                    
                     </div>
                 </div>
             </div>

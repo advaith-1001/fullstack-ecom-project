@@ -47,7 +47,7 @@ function NavBar() {
             <div className="login-cart-container">
                 {user ? (
                     <>
-                        <span className="username">Welcome, {user.username}</span>
+                        <span className="new-user-q">Welcome, {user.userName}</span>
                         <button className="login-button" onClick={handleLogout}>
                             Logout
                         </button>
