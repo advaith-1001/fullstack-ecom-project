@@ -11,6 +11,7 @@ import com.adv.fullstack_ecom.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -103,6 +104,18 @@ public class CartService {
 
 
     public List<CartItem> getCartItemsByUserName(String username) {
-        return cartItemRepository.findAllByUserName(username);
+        Cart cart = getCartByCustomerUserName(username);
+
+        return cart.getCartItems();
+
+    }
+
+    public Integer getTotalCartPrice(String userName) {
+        Cart cart = getCartByCustomerUserName(userName);
+        int total = 0;
+        for(CartItem item : cart.getCartItems()) {
+            total += (int) item.getPrice();
+        }
+        return total;
     }
 }

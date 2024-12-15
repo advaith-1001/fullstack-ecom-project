@@ -1,5 +1,6 @@
 package com.adv.fullstack_ecom.controller;
 
+import com.adv.fullstack_ecom.entity.Cart;
 import com.adv.fullstack_ecom.entity.CartItem;
 import com.adv.fullstack_ecom.entity.Customer;
 import com.adv.fullstack_ecom.repository.ProductRepository;
@@ -39,10 +40,14 @@ public class CartController {
         return ResponseEntity.ok("Item quantity Updated");
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<CartItem>> viewCart(Authentication auth) {
-//           String username = auth.getName();
-//        return ResponseEntity.ok(cartService.getCartItemsByUserName(username));
-//    }
+    @GetMapping("/get-items")
+    public ResponseEntity<List<CartItem>> viewCart(@RequestParam String userName) {
+        return ResponseEntity.ok(cartService.getCartItemsByUserName(userName));
+    }
+
+    @GetMapping("/total")
+    public ResponseEntity<Integer> totalCartPrice(@RequestParam String userName) {
+        return ResponseEntity.ok(cartService.getTotalCartPrice(userName));
+    }
 
 }

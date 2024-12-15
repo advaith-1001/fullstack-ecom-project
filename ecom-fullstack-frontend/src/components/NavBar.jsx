@@ -32,6 +32,9 @@ function NavBar() {
                 {user != "" ? (
                     <>
                         <span className="new-user-q">Welcome, {user}</span>
+                        <a className="shopping-cart" href="/cart">
+                        <i className="fas fa-shopping-cart"></i>
+                        </a>
                         <button className="login-button" onClick={handleLogout}>
                             Logout
                         </button>
