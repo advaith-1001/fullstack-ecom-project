@@ -32,7 +32,6 @@ function All() {
 
     return (
         <div className="all-content">
-            <NavBar />
             <div className="category-header-container">
                 <h1 className="category-header">All Products</h1>
             </div>

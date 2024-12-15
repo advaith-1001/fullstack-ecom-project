@@ -32,7 +32,6 @@ function Utensils({category}) {
 
     return (
         <div className="utensils-content">
-            <NavBar />
             <div className="category-header-container">
                 <h1 className="category-header">Utensils</h1>
             </div>

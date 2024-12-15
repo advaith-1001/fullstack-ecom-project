@@ -58,7 +58,7 @@ public class CustomerController {
     public ResponseEntity<?> currentUser(HttpSession session) {
         Customer customer = (Customer) session.getAttribute("user");
         if (customer != null) {
-            return ResponseEntity.ok(customer);
+            return ResponseEntity.ok(customer.getUserName());
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No user logged in");
     }

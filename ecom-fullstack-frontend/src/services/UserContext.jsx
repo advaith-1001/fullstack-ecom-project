@@ -1,26 +1,32 @@
-// import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 
-// const UserContext = createContext();
+const UserContext = createContext();
 
-// export const UserProvider = ({ children }) => {
-//     const [user, setUser] = useState(() => {
-//         const savedUser = localStorage.getItem("user");
-//         return savedUser ? JSON.parse(savedUser) : null;
-//     });
+export const UserProvider = ({ children }) => {
+    const [user, setUser] = useState("");
 
-//     useEffect(() => {
-//         if (user) {
-//             localStorage.setItem("user", JSON.stringify(user));
-//         } else {
-//             localStorage.removeItem("user");
-//         }
-//     },  [user]); // Dependency array added to update on `user` changes
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get("http://localhost:8080/api/auth/current-user", {
+                    withCredentials: true,
+                });
+                console.log("User fetched:", response.data);
+                setUser(response.data);
+            } catch (error) {
+                console.log("No user is logged in.");
+            }
+        };
+        fetchUser();
+    },[]);
 
-//     return (
-//         <UserContext.Provider value={{ user, setUser }}>
-//             {children}
-//         </UserContext.Provider>
-//     );
-// };
+    return (
+        <UserContext.Provider value={{ user, setUser }}>
+            {children}
+        </UserContext.Provider>
+    );
+};
 
-// export const useUser = () => useContext(UserContext); 
+export const useUser = () => useContext(UserContext);
+

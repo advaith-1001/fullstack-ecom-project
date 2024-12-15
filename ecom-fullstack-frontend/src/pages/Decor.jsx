@@ -32,7 +32,6 @@ function Decor({category}) {
 
     return (
         <div className="decor-content">
-            <NavBar />
             <div className="category-header-container">
                 <h1 className="category-header">Decor</h1>
             </div>

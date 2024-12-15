@@ -32,7 +32,6 @@ function Cleaning({category}) {
 
     return (
         <div className="cleaning-content">
-            <NavBar />
             <div className="category-header-container">
                 <h1 className="category-header">Cleaning</h1>
             </div>

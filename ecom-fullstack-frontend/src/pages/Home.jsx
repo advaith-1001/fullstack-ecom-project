@@ -5,7 +5,6 @@ import "../styles.css"
 
 function Home() {
     return(<div>
-        <NavBar />
         <div className="home-body">
         <h1 className="home-typography">Home Essentials,</h1>
         <h1 className="home-typography">at one place.</h1>

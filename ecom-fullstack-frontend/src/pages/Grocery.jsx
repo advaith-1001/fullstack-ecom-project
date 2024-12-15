@@ -32,7 +32,6 @@ function Grocery({category}) {
 
     return (
         <div className="grocery-content">
-            <NavBar />
             <div className="category-header-container">
                 <h1 className="category-header">Grocery</h1>
             </div>

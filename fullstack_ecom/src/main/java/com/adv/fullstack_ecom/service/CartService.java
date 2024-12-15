@@ -2,6 +2,7 @@ package com.adv.fullstack_ecom.service;
 
 import com.adv.fullstack_ecom.entity.Cart;
 import com.adv.fullstack_ecom.entity.CartItem;
+import com.adv.fullstack_ecom.entity.Customer;
 import com.adv.fullstack_ecom.entity.Product;
 import com.adv.fullstack_ecom.repository.CartItemRepository;
 import com.adv.fullstack_ecom.repository.CartRepository;
@@ -29,11 +30,21 @@ public class CartService {
     private CustomerRepository customerRepository;
 
     public Cart getCartByCustomerUserName(String username) {
-        if(cartRepository.findByCustomerUserName(username) == null) {
-            return new Cart();
+        Customer customer = customerRepository.findByUserName(username)
+                .orElseThrow(() -> new IllegalArgumentException("Customer not found with username: " + username));
+
+        // Return the existing cart if it exists
+        if (customer.getCart() != null) {
+            return customer.getCart();
         }
 
-        return cartRepository.findByCustomerUserName(username);
+        // Create a new cart if it doesn't exist
+        Cart newCart = new Cart();
+        newCart.setCustomer(customer);
+        customer.setCart(newCart); // Set the relationship
+        cartRepository.save(newCart); // Save the new cart to the database
+
+        return newCart;
     }
 
 
@@ -41,16 +52,37 @@ public class CartService {
 
         Cart cart = getCartByCustomerUserName(username);
 
-        Optional<Product> product = productRepository.findById(productId);
+        // Find the product by ID
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new IllegalArgumentException("Product not found with ID: " + productId));
 
-        CartItem cartItem = new CartItem();
-        cartItem.setProduct(product.get());
-        cartItem.setQuantity(quantity);
-        cartItem.setPrice(product.get().getPrice() * quantity);
+        // Check if the product already exists in the cart
+        Optional<CartItem> existingCartItem = cart.getCartItems().stream()
+                .filter(item -> item.getProduct().getId().equals(productId))
+                .findFirst();
 
-        cart.getCartItems().add(cartItem);
-        cart.setTotalPrice(cart.getTotalPrice() + cartItem.getPrice());
+        if (existingCartItem.isPresent()) {
+            // If the product is already in the cart, update its quantity and price
+            CartItem cartItem = existingCartItem.get();
+            cartItem.setQuantity(cartItem.getQuantity() + quantity);
+            cartItem.setPrice(cartItem.getPrice() + (product.getPrice() * quantity));
+        } else {
+            // If the product is not in the cart, add it as a new item
+            CartItem newCartItem = new CartItem();
+            newCartItem.setProduct(product);
+            newCartItem.setQuantity(quantity);
+            newCartItem.setPrice(product.getPrice() * quantity);
+            newCartItem.setCart(cart);
+            cart.getCartItems().add(newCartItem);
+        }
 
+        // Update the total price of the cart
+        double updatedTotalPrice = cart.getCartItems().stream()
+                .mapToDouble(CartItem::getPrice)
+                .sum();
+        cart.setTotalPrice(updatedTotalPrice);
+
+        // Save the cart
         cartRepository.save(cart);
     }
 

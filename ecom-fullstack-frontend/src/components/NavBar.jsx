@@ -1,33 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useUser } from "../services/UserContext";
 import "../styles.css";
+import axios from "axios";
 
 function NavBar() {
-    const [user, setUser] = useState(null); // State for user details
+    const { user, setUser } = useUser();
     const navigate = useNavigate();
 
-    // Fetch the current user details on mount
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const response = await axios.get("http://localhost:8080/api/auth/current-user", {
-                    withCredentials: true, // Ensures cookies are sent with requests
-                });
-                setUser(response.data); // Set user data if logged in
-            } catch (error) {
-                console.log("No user is logged in.");
-            }
-        };
-        fetchUser();
-    }, []);
-
-    // Handle logout functionality
     const handleLogout = async () => {
         try {
             await axios.post("http://localhost:8080/api/auth/logout", {}, { withCredentials: true });
-            setUser(null); // Clear user state
-            navigate("/home"); // Redirect to home page
+            setUser("");
+            navigate("/home");
         } catch (error) {
             console.error("Logout failed", error);
         }
@@ -45,9 +29,9 @@ function NavBar() {
                 <li><Link to="/decor">Decor</Link></li>
             </ul>
             <div className="login-cart-container">
-                {user ? (
+                {user != "" ? (
                     <>
-                        <span className="new-user-q">Welcome, {user.userName}</span>
+                        <span className="new-user-q">Welcome, {user}</span>
                         <button className="login-button" onClick={handleLogout}>
                             Logout
                         </button>

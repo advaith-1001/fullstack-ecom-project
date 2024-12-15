@@ -18,6 +18,7 @@ function App() {
     <div>
       {/* <UserProvider > */}
       <BrowserRouter>
+      <NavBar />
       <Routes>
         <Route index element={<Home />} />
         <Route path="/home" element={<Home />}/>
