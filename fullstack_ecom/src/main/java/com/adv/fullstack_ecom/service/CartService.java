@@ -87,8 +87,17 @@ public class CartService {
         cartRepository.save(cart);
     }
 
-    public void removeItemFromCart(Long productId) {
-        cartItemRepository.delete(cartItemRepository.findByProductId(productId));
+    public void removeItemFromCart(String userName, Long productId) {
+        Cart cart = getCartByCustomerUserName(userName);
+        List<CartItem> list = cart.getCartItems();
+        boolean removed = list.removeIf(item -> item.getProduct().getId() == productId);
+
+        if (removed) {
+            // Save the cart if changes need to persist to the database
+            cartRepository.save(cart); // Ensure cartRepository is available
+        } else {
+            throw new IllegalArgumentException("Item with productId: " + productId + " not found in cart");
+        }
     }
 
     public void updateItemQuantity(Long productId, int quantity) {

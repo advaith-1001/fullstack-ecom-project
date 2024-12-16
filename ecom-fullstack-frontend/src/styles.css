@@ -580,6 +580,7 @@ i {
     gap: 1rem;
     margin-bottom: 4rem;
     align-items: center;
+
 }
 
 .cart-item-div {
@@ -649,6 +650,29 @@ i {
     }
 
     .place-order:hover {
+        cursor: pointer;
+        color: #ECDFCC;
+        transition: color 0.3s ease;
+    }
+
+    .cart-content {
+        min-height: 100vh;
+    }
+
+    .delete-cartitem-button {
+        width: 100px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        font-family: "Josefin Sans", "sans-serif";
+        border-radius: 25px;
+        font-size: 1.25rem;
+        border: none;
+        background-color: #A5B68D;
+    }
+
+    .delete-cartitem-button:hover {
         cursor: pointer;
         color: #ECDFCC;
         transition: color 0.3s ease;
