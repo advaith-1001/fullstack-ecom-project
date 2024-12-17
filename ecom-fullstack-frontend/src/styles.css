@@ -677,3 +677,91 @@ i {
         color: #ECDFCC;
         transition: color 0.3s ease;
     }
+
+    .order-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        justify-content: space-around;
+    }
+
+    .order-form {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        border: #493628 solid 3px;
+        align-items: center;
+
+        border-radius: 10px;
+    }
+
+    .order-name-container {
+        padding: 1rem;
+    }
+
+    .order-address-container {
+        padding: 1rem;
+    }
+    .order-phone-container {
+        padding: 1rem;
+    }
+
+    .order-label {
+        font-family: "Josefin Sans", "sans-serif";
+    }
+
+
+    .order-name-input {
+        width: 200px;
+        border: #493628 solid 2px;
+        padding: 1rem;
+        border-radius: 7px;
+        font-family:  "Josefin Sans", "sans-serif";
+        margin-left: 2rem;
+    }
+
+    .order-phone-input {
+        width: 200px;
+        border: #493628 solid 2px;
+        padding: 1rem;
+        border-radius: 7px;
+        font-family:  "Josefin Sans", "sans-serif";
+        margin-left: 1.5rem;
+    }
+
+    .order-address-input {
+        width: 200px;
+        border: #493628 solid 2px;
+        padding: 1rem;
+        border-radius: 7px;
+        font-family:  "Josefin Sans", "sans-serif";
+        margin-left: 1.1rem;
+    }
+
+
+    .order-submit-btn {
+        width: 150px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        font-family: "Josefin Sans", "sans-serif";
+        border-radius: 25px;
+        font-size: 1rem;
+        border: none;
+        background-color: #A5B68D;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #493628;
+    }
+
+    .order-submit-btn:hover {
+        cursor: pointer;
+        color: #ECDFCC;
+        transition: color 0.3s ease;
+    }
+
+    .order-header {
+        font-family:"Josefin Sans", "sans-serif";
+    }

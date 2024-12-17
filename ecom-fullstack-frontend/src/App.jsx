@@ -8,6 +8,7 @@ import All from "./pages/All";
 import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Order from "./pages/Order.jsx";
 // import {UserProvider, useUser } from "./services/UserContext.jsx";
 import Cart from "./pages/Cart.jsx";
 import NavBar from "./components/NavBar.jsx";
@@ -31,6 +32,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/product/:id" element={<ProductDetails />}/>
         <Route path="/cart" element={<Cart />}/>
+        <Route path="/order" element={<Order />} />
       </Routes>
       </BrowserRouter>
       {/* </UserProvider> */}

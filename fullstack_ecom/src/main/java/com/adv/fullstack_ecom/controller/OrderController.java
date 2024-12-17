@@ -1,8 +1,11 @@
 package com.adv.fullstack_ecom.controller;
 
+import com.adv.fullstack_ecom.entity.Customer;
 import com.adv.fullstack_ecom.entity.Order;
+import com.adv.fullstack_ecom.repository.CustomerRepository;
 import com.adv.fullstack_ecom.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +18,9 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
     @GetMapping("/all")
     public List<Order> getAllOrders() {
         return orderService.getAllOrders();
@@ -25,9 +31,10 @@ public class OrderController {
         return orderService.getOrderById(id);
     }
 
+
     @PostMapping("/create")
-    public Order createOrder(@RequestBody Order order) {
-        return orderService.createOrder(order);
+    public ResponseEntity<?> createOrder(@RequestParam String userName, @RequestParam String name, @RequestParam String address, @RequestParam String phoneNumber) {
+        return orderService.createOrder(userName, name, address, phoneNumber);
     }
 
     @DeleteMapping("/delete/{id}")

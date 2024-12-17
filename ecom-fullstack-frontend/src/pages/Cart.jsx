@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../services/UserContext";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -100,7 +101,7 @@ const Cart = () => {
                 <p>Price: ${item.price}</p>
               </div>
               <div>
-                <button className="delete-cartitem-button" onClick={() => handleRemoveClick(item.product.id)}>Remove</button>
+                  <button className="delete-cartitem-button" onClick={() => handleRemoveClick(item.product.id)}>Remove</button>
               </div>
             </div>
           ))
@@ -109,7 +110,9 @@ const Cart = () => {
         {cartItems.length > 0 && (
             <div className="total-price">
                 <p>Total Price: ${totalPrice}</p>
+                <Link to="/order">
                 <button className="place-order">Place Order</button>
+                </Link>
              </div>
         )}
       </div>
